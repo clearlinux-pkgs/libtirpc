@@ -4,7 +4,7 @@
 #
 Name     : libtirpc
 Version  : 0.3.2
-Release  : 2
+Release  : 3
 URL      : http://downloads.sourceforge.net/project/libtirpc/libtirpc/0.3.2/libtirpc-0.3.2.tar.bz2
 Source0  : http://downloads.sourceforge.net/project/libtirpc/libtirpc/0.3.2/libtirpc-0.3.2.tar.bz2
 Summary  : Transport Independent RPC Library
