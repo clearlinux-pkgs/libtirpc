@@ -4,13 +4,14 @@
 #
 Name     : libtirpc
 Version  : 1.0.1
-Release  : 4
+Release  : 5
 URL      : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Source0  : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Summary  : Transport Independent RPC Library
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: libtirpc-lib
+Requires: libtirpc-data
 Requires: libtirpc-doc
 
 %description
@@ -19,10 +20,19 @@ This package contains SunLib's implementation of transport-independent
 RPC (TI-RPC) documentation.  This library forms a piece of the base of Open Network
 Computing (ONC), and is derived directly from the Solaris 2.3 source.
 
+%package data
+Summary: data components for the libtirpc package.
+Group: Data
+
+%description data
+data components for the libtirpc package.
+
+
 %package dev
 Summary: dev components for the libtirpc package.
 Group: Development
 Requires: libtirpc-lib
+Requires: libtirpc-data
 Provides: libtirpc-devel
 
 %description dev
@@ -40,6 +50,7 @@ doc components for the libtirpc package.
 %package lib
 Summary: lib components for the libtirpc package.
 Group: Libraries
+Requires: libtirpc-data
 
 %description lib
 lib components for the libtirpc package.
@@ -61,9 +72,17 @@ make VERBOSE=1 V=1 %{?_smp_mflags} check
 %install
 rm -rf %{buildroot}
 %make_install
+## make_install_append content
+mkdir -p %{buildroot}/usr/share/defaults/etc
+cp doc/netconfig %{buildroot}/usr/share/defaults/etc/netconfig
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/defaults/etc/netconfig
 
 %files dev
 %defattr(-,root,root,-)
