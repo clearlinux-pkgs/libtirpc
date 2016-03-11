@@ -1,0 +1,2 @@
+mkdir -p %{buildroot}/usr/share/defaults/etc
+cp doc/netconfig %{buildroot}/usr/share/defaults/etc/netconfig
