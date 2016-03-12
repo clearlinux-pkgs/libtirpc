@@ -4,7 +4,7 @@
 #
 Name     : libtirpc
 Version  : 1.0.1
-Release  : 5
+Release  : 6
 URL      : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Source0  : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Summary  : Transport Independent RPC Library
@@ -13,6 +13,7 @@ License  : BSD-3-Clause
 Requires: libtirpc-lib
 Requires: libtirpc-data
 Requires: libtirpc-doc
+Patch1: 0001-Use-vendor-config-files-as-fallback-for-a-stateless-.patch
 
 %description
 LIBTIRPC 0.1 FROM SUN'S TIRPCSRC 2.3 29 Aug 1994
@@ -58,6 +59,7 @@ lib components for the libtirpc package.
 
 %prep
 %setup -q -n libtirpc-1.0.1
+%patch1 -p1
 
 %build
 %configure --disable-static --disable-gssapi
