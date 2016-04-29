@@ -4,7 +4,7 @@
 #
 Name     : libtirpc
 Version  : 1.0.1
-Release  : 6
+Release  : 7
 URL      : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Source0  : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Summary  : Transport Independent RPC Library
