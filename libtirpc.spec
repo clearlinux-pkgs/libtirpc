@@ -4,7 +4,7 @@
 #
 Name     : libtirpc
 Version  : 1.0.1
-Release  : 9
+Release  : 10
 URL      : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Source0  : http://downloads.sourceforge.net/project/libtirpc/libtirpc/1.0.1/libtirpc-1.0.1.tar.bz2
 Summary  : Transport Independent RPC Library
@@ -14,6 +14,7 @@ Requires: libtirpc-lib
 Requires: libtirpc-data
 Requires: libtirpc-doc
 Patch1: 0001-Use-vendor-config-files-as-fallback-for-a-stateless-.patch
+Patch2: cve-2017-8879.patch
 
 %description
 LIBTIRPC 0.1 FROM SUN'S TIRPCSRC 2.3 29 Aug 1994
@@ -60,18 +61,30 @@ lib components for the libtirpc package.
 %prep
 %setup -q -n libtirpc-1.0.1
 %patch1 -p1
+%patch2 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
+export SOURCE_DATE_EPOCH=1494002526
+export CFLAGS="$CFLAGS -fstack-protector-strong "
+export FCFLAGS="$CFLAGS -fstack-protector-strong "
+export FFLAGS="$CFLAGS -fstack-protector-strong "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong "
 %configure --disable-static --disable-gssapi
 make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1494002526
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
@@ -119,8 +132,8 @@ cp doc/netconfig %{buildroot}/usr/share/defaults/etc/netconfig
 /usr/include/tirpc/rpc/xdr.h
 /usr/include/tirpc/rpcsvc/crypt.h
 /usr/include/tirpc/rpcsvc/crypt.x
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libtirpc.so
+/usr/lib64/pkgconfig/libtirpc.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -129,4 +142,5 @@ cp doc/netconfig %{buildroot}/usr/share/defaults/etc/netconfig
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libtirpc.so.3
+/usr/lib64/libtirpc.so.3.0.0
