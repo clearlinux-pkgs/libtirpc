@@ -4,7 +4,7 @@
 #
 Name     : libtirpc
 Version  : 1.0.2
-Release  : 13
+Release  : 14
 URL      : https://sourceforge.net/projects/libtirpc/files/libtirpc/1.0.2/libtirpc-1.0.2.tar.bz2
 Source0  : https://sourceforge.net/projects/libtirpc/files/libtirpc/1.0.2/libtirpc-1.0.2.tar.bz2
 Summary  : Transport Independent RPC Library
@@ -14,6 +14,7 @@ Requires: libtirpc-lib
 Requires: libtirpc-data
 Requires: libtirpc-doc
 Patch1: 0001-Use-vendor-config-files-as-fallback-for-a-stateless-.patch
+Patch2: missing-header.patch
 
 %description
 LIBTIRPC 0.1 FROM SUN'S TIRPCSRC 2.3 29 Aug 1994
@@ -60,13 +61,14 @@ lib components for the libtirpc package.
 %prep
 %setup -q -n libtirpc-1.0.2
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1499382341
+export SOURCE_DATE_EPOCH=1509471316
 export CFLAGS="$CFLAGS -fstack-protector-strong "
 export FCFLAGS="$CFLAGS -fstack-protector-strong "
 export FFLAGS="$CFLAGS -fstack-protector-strong "
@@ -82,7 +84,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1499382341
+export SOURCE_DATE_EPOCH=1509471316
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
