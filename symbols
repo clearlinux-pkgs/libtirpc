@@ -85,6 +85,7 @@ libtirpc.so.3:key_encryptsession
 libtirpc.so.3:key_encryptsession_pk
 libtirpc.so.3:key_gendes
 libtirpc.so.3:key_get_conv
+libtirpc.so.3:key_secretkey_is_set
 libtirpc.so.3:key_setnet
 libtirpc.so.3:key_setsecret
 libtirpc.so.3:libtirpc_set_debug
