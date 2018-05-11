@@ -4,7 +4,7 @@
 #
 Name     : libtirpc
 Version  : 1.0.3
-Release  : 17
+Release  : 18
 URL      : https://sourceforge.net/projects/libtirpc/files/libtirpc/1.0.3/libtirpc-1.0.3.tar.bz2
 Source0  : https://sourceforge.net/projects/libtirpc/files/libtirpc/1.0.3/libtirpc-1.0.3.tar.bz2
 Summary  : Transport Independent RPC Library
@@ -66,11 +66,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522116315
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export SOURCE_DATE_EPOCH=1526010732
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --disable-gssapi
 make  %{?_smp_mflags}
 
@@ -82,7 +82,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522116315
+export SOURCE_DATE_EPOCH=1526010732
 rm -rf %{buildroot}
 %make_install
 ## make_install_append content
