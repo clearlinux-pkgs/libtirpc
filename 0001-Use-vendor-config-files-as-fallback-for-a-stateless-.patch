@@ -1,4 +1,4 @@
-From a1e47d4ae605cf447354b90f18b58e1bf1ec9451 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <michael.i.doherty@intel.com>
 Date: Sat, 12 Mar 2016 10:01:43 +0000
 Subject: [PATCH] Use vendor config files as fallback for a stateless
@@ -11,7 +11,7 @@ Signed-off-by: Ikey Doherty <michael.i.doherty@intel.com>
  2 files changed, 15 insertions(+), 2 deletions(-)
 
 diff --git a/src/getnetconfig.c b/src/getnetconfig.c
-index 92e7c43..d0af5c0 100644
+index cfd33c2..967d35b 100644
 --- a/src/getnetconfig.c
 +++ b/src/getnetconfig.c
 @@ -123,6 +123,14 @@ extern pthread_mutex_t nc_db_lock;
@@ -64,6 +64,3 @@ index 3f1a685..83fd42e 100644
  #define NETPATH	  "NETPATH"
  
  struct netconfig {
--- 
-2.7.1
-

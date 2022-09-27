@@ -1,6 +1,1 @@
-Configure miss: gssapi/gssapi.h usability
-Configure miss: gssapi/gssapi.h presence
-Configure miss: gssapi/gssapi.h
-Configure miss: gssapi/gssapi_ext.h usability
-Configure miss: gssapi/gssapi_ext.h presence
-Configure miss: gssapi/gssapi_ext.h
+Configure miss: x86_64-generic-linux-gnu-file
