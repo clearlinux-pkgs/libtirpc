@@ -4,7 +4,7 @@
 #
 Name     : libtirpc
 Version  : 1.3.3
-Release  : 26
+Release  : 27
 URL      : https://sourceforge.net/projects/libtirpc/files/libtirpc/1.3.3/libtirpc-1.3.3.tar.bz2
 Source0  : https://sourceforge.net/projects/libtirpc/files/libtirpc/1.3.3/libtirpc-1.3.3.tar.bz2
 Summary  : Transport Independent RPC Library
@@ -79,15 +79,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1664294310
+export SOURCE_DATE_EPOCH=1664931977
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static --disable-gssapi \
 --enable-authdes
 make  %{?_smp_mflags}
@@ -100,10 +100,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1664294310
+export SOURCE_DATE_EPOCH=1664931977
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libtirpc
-cp %{_builddir}/libtirpc-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libtirpc/d4b24d1c1f5dca54717237af8f7caaaa493232f1
+cp %{_builddir}/libtirpc-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libtirpc/d4b24d1c1f5dca54717237af8f7caaaa493232f1 || :
 %make_install
 ## install_append content
 mkdir -p %{buildroot}/usr/share/defaults/etc
